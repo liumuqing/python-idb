@@ -1537,6 +1537,7 @@ class idaapi:
                     block = q[0]
                     q = q[1:]
 
+
                     logger.debug('exploring %s', block)
 
                     if block.startEA in seen:
@@ -1544,7 +1545,7 @@ class idaapi:
                         continue
                     logger.debug('new!')
                     seen.add(block.startEA)
-
+                    """
                     for xref in api.idaapi._get_flow_preds(block.startEA):
                         if xref.src not in bbs_by_end:
                             pred_start = api.idaapi._find_bb_start(xref.src)
@@ -1559,6 +1560,7 @@ class idaapi:
                         preds[block.startEA].add(pred.startEA)
                         succs[pred.startEA].add(block.startEA)
                         q.append(pred)
+                    """
 
                     for xref in api.idaapi._get_flow_succs(block.lastInstEA):
                         if xref.dst not in bbs_by_start:
